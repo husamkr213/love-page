@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Husam ❤️ Reema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #000;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    #hearts-container {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .heart {
+      position: absolute; color: rgba(255, 77, 109, 0.7);
+      animation: float linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+    .content { position: relative; z-index: 1; padding: 40px 20px; }
+    .header { margin-bottom: 50px; }
+    .header h1 { font-size: 2.5rem; color: #ff4d6d; text-shadow: 0 0 15px rgba(255, 77, 109, 0.5); }
+    .timer-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px; border-radius: 20px;
+      display: inline-block; margin-top: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #timer { font-size: 1.1rem; line-height: 1.6; color: #fff; }
+    .gallery { display: flex; flex-direction: column; align-items: center; gap: 50px; margin-top: 30px; }
+    .photo-card {
+      width: 100%; max-width: 450px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 25px; padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .photo-card img {
+      width: 100%; border-radius: 18px;
+      display: block; margin-bottom: 15px;
+    }
+    .love-text { font-size: 1.3rem; font-weight: bold; color: #ffb3c1; }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <div id="hearts-container"></div>
+
+  <audio id="loveSong" autoplay loop>
+    <source src="الحب جاني .m4a" type="audio/mp4">
+  </audio>
+
+  <div class="content">
+    <div class="header">
+      <h1>Husam ❤️ Reema</h1>
+      <p style="margin-top:10px; opacity:0.8;">تاريخ أول لقاء: 10-4-2025</p>
+      <div class="timer-box">
+        <div id="timer">بدأنا نعد الثواني...</div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <div class="photo-card"><img src="1.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="2.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="3.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="4.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="5.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="6.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+    </div>
+  </div>
+
+  <script>
+    // تشغيل الأغنية عند اللمس (ضروري للمتصفحات)
+    document.body.addEventListener('click', () => {
+      document.getElementById('loveSong').play();
+    }, { once: true });
+
+    // العداد الزمني من 10-4-2025
+    const startDate = new Date("2025-04-10T00:00:00").getTime();
+    function updateTimer() {
+      const now = new Date().getTime();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById("timer").innerHTML = `صار لنا مع بعض: <br> ${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
+    }
+    setInterval(updateTimer, 1000);
+
+    // القلوب المتطايرة
+    const container = document.getElementById('hearts-container');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
