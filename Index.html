@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Husam ❤️ Reema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Cairo',sans-serif;
+      overflow:hidden;
+      background:linear-gradient(180deg,#ff6fa5,#ff2d55);
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-align:center;
+      position:relative;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.35);
+      z-index:1;
+    }
+
+    .container{
+      position:relative;
+      z-index:2;
+      width:90%;
+      max-width:420px;
+      animation:fadeIn 1.5s ease;
+    }
+
+    .photo{
+      width:100%;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,0.4);
+      margin-bottom:25px;
+      border:3px solid rgba(255,255,255,0.25);
+    }
+
+    .photo img{
+      width:100%;
+      display:block;
+    }
+
+    h1{
+      font-size:2.2rem;
+      margin-bottom:10px;
+      text-shadow:0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .date{
+      display:inline-block;
+      margin:18px 0;
+      padding:12px 28px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(10px);
+      font-size:1.1rem;
+      box-shadow:0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .message{
+      margin-top:10px;
+      font-size:1.6rem;
+      font-weight:700;
+      line-height:1.8;
+      text-shadow:0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .heart{
+      position:absolute;
+      color:white;
+      font-size:22px;
+      animation:float linear infinite;
+      opacity:0.8;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(110vh) scale(0.8);
+        opacity:0;
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-120px) scale(1.4);
+        opacity:0;
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .music{
+      margin-top:20px;
+      font-size:0.95rem;
+      opacity:0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="container">
+
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop" alt="love" />
+    </div>
+
+    <h1>.husam ❤️ Reema</h1>
+
+    <div class="date">
+      10-4-2025
+    </div>
+
+    <div class="message">
+      الحب جاني جاني ❤️<br>
+      وبقيتي أجمل شي بحياتي
+    </div>
+
+    <div class="music">
+      🎵 الحب جاني جاني
+    </div>
+
+  </div>
+
+  <script>
+    const colors=["#fff","#ffd1dc","#ffebf1"];
+
+    for(let i=0;i<45;i++){
+      const heart=document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML='❤';
+
+      heart.style.left=Math.random()*100+'vw';
+      heart.style.animationDuration=(Math.random()*6+5)+'s';
+      heart.style.fontSize=(Math.random()*22+18)+'px';
+      heart.style.color=colors[Math.floor(Math.random()*colors.length)];
+      heart.style.animationDelay=Math.random()*5+'s';
+
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
