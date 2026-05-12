@@ -83,12 +83,10 @@
   </div>
 
   <script>
-    // تشغيل الأغنية عند أول لمسة للشاشة (ضروري للمتصفحات)
     document.body.addEventListener('click', () => {
       document.getElementById('loveSong').play();
     }, { once: true });
 
-    // عداد الوقت من تاريخ 10-4-2025
     const startDate = new Date("2025-04-10T00:00:00").getTime();
     function updateTimer() {
       const now = new Date().getTime();
@@ -101,7 +99,6 @@
     }
     setInterval(updateTimer, 1000);
 
-    // تأثير القلوب المتساقطة
     const container = document.getElementById('hearts-container');
     function createHeart() {
       const heart = document.createElement('div');
