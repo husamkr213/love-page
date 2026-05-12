@@ -6,163 +6,114 @@
   <title>Husam ❤️ Reema</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #000;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
     }
-
-    body{
-      font-family:'Cairo',sans-serif;
-      overflow:hidden;
-      background:linear-gradient(180deg,#ff6fa5,#ff2d55);
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      text-align:center;
-      position:relative;
+    #hearts-container {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
     }
-
-    .overlay{
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,0.35);
-      z-index:1;
+    .heart {
+      position: absolute; color: rgba(255, 77, 109, 0.7);
+      animation: float linear infinite;
     }
-
-    .container{
-      position:relative;
-      z-index:2;
-      width:90%;
-      max-width:420px;
-      animation:fadeIn 1.5s ease;
+    @keyframes float {
+      0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
-
-    .photo{
-      width:100%;
-      border-radius:30px;
-      overflow:hidden;
-      box-shadow:0 10px 40px rgba(0,0,0,0.4);
-      margin-bottom:25px;
-      border:3px solid rgba(255,255,255,0.25);
+    .content { position: relative; z-index: 1; padding: 40px 20px; }
+    .header { margin-bottom: 50px; }
+    .header h1 { font-size: 2.5rem; color: #ff4d6d; text-shadow: 0 0 15px rgba(255, 77, 109, 0.5); }
+    .timer-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px; border-radius: 20px;
+      display: inline-block; margin-top: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-
-    .photo img{
-      width:100%;
-      display:block;
+    #timer { font-size: 1.1rem; line-height: 1.6; color: #fff; }
+    .gallery { display: flex; flex-direction: column; align-items: center; gap: 50px; margin-top: 30px; }
+    .photo-card {
+      width: 100%; max-width: 450px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 25px; padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-
-    h1{
-      font-size:2.2rem;
-      margin-bottom:10px;
-      text-shadow:0 4px 15px rgba(0,0,0,0.4);
+    .photo-card img {
+      width: 100%; border-radius: 18px;
+      display: block; margin-bottom: 15px;
     }
-
-    .date{
-      display:inline-block;
-      margin:18px 0;
-      padding:12px 28px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(10px);
-      font-size:1.1rem;
-      box-shadow:0 4px 20px rgba(0,0,0,0.25);
-    }
-
-    .message{
-      margin-top:10px;
-      font-size:1.6rem;
-      font-weight:700;
-      line-height:1.8;
-      text-shadow:0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .heart{
-      position:absolute;
-      color:white;
-      font-size:22px;
-      animation:float linear infinite;
-      opacity:0.8;
-    }
-
-    @keyframes float{
-      0%{
-        transform:translateY(110vh) scale(0.8);
-        opacity:0;
-      }
-      10%{
-        opacity:1;
-      }
-      100%{
-        transform:translateY(-120px) scale(1.4);
-        opacity:0;
-      }
-    }
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    .music{
-      margin-top:20px;
-      font-size:0.95rem;
-      opacity:0.9;
-    }
+    .love-text { font-size: 1.3rem; font-weight: bold; color: #ffb3c1; }
+    audio { display: none; }
   </style>
 </head>
 <body>
 
-  <div class="overlay"></div>
+  <div id="hearts-container"></div>
 
-  <div class="container">
+  <audio id="loveSong" autoplay loop>
+    <source src="الحب جاني .m4a" type="audio/mp4">
+  </audio>
 
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop" alt="love" />
+  <div class="content">
+    <div class="header">
+      <h1>Husam ❤️ Reema</h1>
+      <p style="margin-top:10px; opacity:0.8;">أجمل يوم في حياتي: 10-4-2025</p>
+      <div class="timer-box">
+        <div id="timer">بدأنا نعد الثواني...</div>
+      </div>
     </div>
 
-    <h1>.husam ❤️ Reema</h1>
-
-    <div class="date">
-      10-4-2025
+    <div class="gallery">
+      <div class="photo-card"><img src="1.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="2.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="3.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="4.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="5.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
+      <div class="photo-card"><img src="6.png"><p class="love-text">بحبك وأنتي روحي وأنتي حياتي وأنتي عيوني ❤️</p></div>
     </div>
-
-    <div class="message">
-      الحب جاني جاني ❤️<br>
-      وبقيتي أجمل شي بحياتي
-    </div>
-
-    <div class="music">
-      🎵 الحب جاني جاني
-    </div>
-
   </div>
 
   <script>
-    const colors=["#fff","#ffd1dc","#ffebf1"];
+    // تشغيل الأغنية عند أول لمسة للشاشة (ضروري للمتصفحات)
+    document.body.addEventListener('click', () => {
+      document.getElementById('loveSong').play();
+    }, { once: true });
 
-    for(let i=0;i<45;i++){
-      const heart=document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML='❤';
-
-      heart.style.left=Math.random()*100+'vw';
-      heart.style.animationDuration=(Math.random()*6+5)+'s';
-      heart.style.fontSize=(Math.random()*22+18)+'px';
-      heart.style.color=colors[Math.floor(Math.random()*colors.length)];
-      heart.style.animationDelay=Math.random()*5+'s';
-
-      document.body.appendChild(heart);
+    // عداد الوقت من تاريخ 10-4-2025
+    const startDate = new Date("2025-04-10T00:00:00").getTime();
+    function updateTimer() {
+      const now = new Date().getTime();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById("timer").innerHTML = `صار لنا مع بعض: <br> ${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
     }
-  </script>
+    setInterval(updateTimer, 1000);
 
+    // تأثير القلوب المتساقطة
+    const container = document.getElementById('hearts-container');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 400);
+  </script>
 </body>
 </html>
